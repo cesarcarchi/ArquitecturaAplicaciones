@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app='myApp'>
+<head>
+	<title></title>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+	<!--Controllers-->
+	<script type="text/javascript" src="controllers/testController.js"></script>
+	<!--Services-->
+	<script type="text/javascript" src="services/testService.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="testController">
+	<input type="submit" value="Listar Estudiantes" ng-click="getAllEstudiantes()"/>
+	<input type="submit" value="Buscar Estudiante" ng-click="getEstudiante()"/>
+	<input type="text" ng-model="post_id" placeholder="inserte el id del estudiante"/>
+  <hr/>
+  <form novalidate class="simple-form">
+    <label>Nombre Estudiante: <input type="text" ng-model="a.nombre" /></label><br />
+    <label>Apellido Estudiante: <input type="text" ng-model="a.apellido" /></label><br />
+    <label>Cedula Estudiante: <input type="text" ng-model="a.cedula" /></label><br />
+    <label>Ciudad Nacimiento: <input type="text" ng-model="a.ciudad" /></label><br />
+    <label>Provincia: <input type="text" ng-model="a.provincia" /></label><br />
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="crear(user)" value="Save" />
+    <h4>{{mensaje}}</h4>
+  </form>
+  <hr/>
+  <div ng-if="posts.exist==1">
+		<h1>Listado de Estudiantes Registrados</h1>
+		<div ng-repeat="p in posts">
+			<pre>
+				<h5> Id Del Estudiante# {{p.id}}</h5>
+				<h2>Nombre del estudiante : {{p.nombre}}</h2>
+				<p>Rest: {{p}}</p>
+			</pre>
+			<hr/>
+		</div>
+	</div>
+	<div ng-if="unPost.exist==1">
+		<h1>Estudiante encontrado:</h1>
+		<pre>
+			<h5> Id Estudiante: # {{unPost.id}}</h5>
+			<h2>Nombre Estudiante: {{unPost.nombre}}</h2>
+			<p>Rest: {{unPost}}</p>
+		</pre>
+		<hr/>
+	</div>
+</body>
+</html>
